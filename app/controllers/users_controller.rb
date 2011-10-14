@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @user = User.new
 
     respond_with(@product) do |format|
-      format.js { render :json => @user, :callback => params[:callback] }
+      format.jsonp { render :json => @user, :callback => params[:callback] }
     end
   end
 
