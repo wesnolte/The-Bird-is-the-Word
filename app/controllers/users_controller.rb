@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_with(@product) do |format|
+      format.xml { render :xml => @user }
       format.js { render :json => @user, :callback => params[:callback] }
     end
   end
