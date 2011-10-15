@@ -10,12 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111014151549) do
+ActiveRecord::Schema.define(:version => 20111015110945) do
 
   create_table "scores", :force => true do |t|
     t.integer  "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|
