@@ -1,4 +1,4 @@
 class Score < ActiveRecord::Base
   
-  has_one :user
+  belongs_to :user
 end
