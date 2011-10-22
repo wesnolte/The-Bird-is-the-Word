@@ -1,0 +1,58 @@
+/* General */
+html, body{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background-color: #FFFAE6;
+}
+
+.box{
+	background-color: #C9E5F2;
+	padding: 1em;
+	margin-left : 2px;
+}
+
+.relative{
+	position:relative;
+}
+
+ul{
+	margin: 0;
+}
+
+ul.inline{
+	list-style-type: none;
+}
+
+	ul.inline li{
+		display: inline;
+	}
+	
+/* Header */
+#banner {
+	background-color: #C9E5F2;	
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+#beta-badge{
+	left: 421px;
+	top: -15px;
+	position: absolute;
+}
+
+/* Score Board */
+.user-score-box{
+	
+}
+
+	.user-score-box img{
+		padding: 0 10px 0 0;
+	}
+
+ul#tweets{
+	list-style-type: none;
+}
+
