@@ -6,6 +6,8 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps
     end
+    
+#    execute "ALTER TABLE users ADD PRIMARY KEY (screen_name);"
   end
 
   def self.down

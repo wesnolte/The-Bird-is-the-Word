@@ -1,26 +1,75 @@
-<h1>Listing users</h1>
+<div id="banner">
+	<div class="container relative">
+		<%= image_tag 'header_441x54.png'%>		
+		<%= image_tag 'beta_badge.png', :id => 'beta-badge'%>		
+	</div>
+</div>
 
-<table>
-  <tr>
-    <th>Screen name</th>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="container">
+	<div id="header">
+		
+		<div id="info" class="box">
+			<h3>So what's this then?</h3>
+			<p>
+				The Bird is the Word is a simple twitter-based game where entry is automatic! If you tweet any of the game phrases below you get 1 point. Champions of the game phrases below get to point to the leaderboard and boast about their verbosity, hooray!
+			</p>
+			<p class="left bottom"><a target="_blank" href="http://twitter.com/wesnolte">Follow me on twitter!</a></p>
+			<p class="right bottom"><a class="retweet vert" target="_blank" href="http://high-autumn-8697.heroku.com/">I'm going to win me some boasting rights by tweeting with #salesforce and #tbitw!</a></p>
+			<div class="clear"></div>
+		</div>
+	</div>
+	
+	<hr/>
+	
+	<h1 class="alt span-9">Tracking these keywords: </h1>
+	<div class="span-15 last">
+		<ul class="inline right">
+			<li><h3 class="left bottom box">salesforce</h3></li>
+			<li><h3 class="left bottom box">forceDotCom</h3></li>
+			<li><h3 class="left bottom box">askforce</h3></li>
+			<li><h3 class="left bottom box">force.com</h3></li>
+			<li><h3 class="left bottom box">sfdc</h3></li>
+		</ul>
+		<hr class="space" />
+	</div>
+	
+	<hr/>
+	<div class="span-11 colborder">
+		<h2>Leaderboard</h2>
+		<h3 class="quiet">Top 20</h3>
+		<dl><% @count = 1 %>
+			<% @users.each do |user| %>
+			  <dt>		
+				<div class="span-10 last user-score-box <%= if(@count==1) then 'notice' else 'box' end %> ">
+					<%= image_tag user.profile_image_url, :class => 'left' %> 
+					<div class="span-5 last">
+						<h3 class="bottom"> <a href="http://twitter.com/<%= user.screen_name %>"><%= user.screen_name %></a> </h3>
+						<h4 class="quiet"> <%= user.name %> </h4>
+					</div>
+					<h1 class="bottom span-1 last"> <%= user.score.value %> </h1>
+				</div>
+			  </dt>
+				<% @count+= 1 %>
+			<% end %>
+		</dl>
+	</div>
+	
+	<div class="span-12 last">
+		<%= image_tag 'http://placekitten.com/470/900' %>
+	</div>
+	
+	<!-- Google Analytics Piece -->
+	<script type="text/javascript">
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.screen_name %></td>
-    <td><%= user.name %></td>
-	<td><%= user.score.value %>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-26186265-1']);
+	  _gaq.push(['_trackPageview']);
 
-<br />
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
 
-<%= link_to 'New User', new_user_path %>
+	</script>
+</div>

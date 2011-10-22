@@ -6,3 +6,15 @@ class ScoreTest < ActiveSupport::TestCase
     assert true
   end
 end
+
+# == Schema Information
+#
+# Table name: scores
+#
+#  id         :integer         not null, primary key
+#  value      :integer
+#  created_at :datetime
+#  updated_at :datetime
+#  user_id    :integer
+#
+

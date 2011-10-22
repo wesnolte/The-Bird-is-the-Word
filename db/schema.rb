@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111015110945) do
+ActiveRecord::Schema.define(:version => 20111021170005) do
 
   create_table "scores", :force => true do |t|
     t.integer  "value"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20111015110945) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "profile_image_url"
   end
 
 end
