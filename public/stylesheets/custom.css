@@ -56,3 +56,15 @@ ul#tweets{
 	list-style-type: none;
 }
 
+/* Tweets */
+p.tweet-text{
+	font-family: tahoma;
+	font-size: 14px;
+}
+
+.score-up{
+	color: green;
+	font-weight: bold;
+}
+}
+
