@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
+    @keywords = ["sfdc", "salesforce", "force.com", "forceDotCom", "chatter"]
+    
     @users = User.all(:include => :score, :order => "scores.value DESC", :limit => 20)
     @tweets = Tweet.all(:include => :user, :order => "twitter_created_at DESC", :limit => 20)
 

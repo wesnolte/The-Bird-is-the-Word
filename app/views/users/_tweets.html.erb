@@ -1,0 +1,19 @@
+<dl>
+	<% @tweets.each do |tweet| %>
+	  <dt class="box">		
+		<div class="span-2">
+			<%= image_tag tweet.user.profile_image_url%> 
+		</div>
+		<p class="span-9 last tweet-text"><%= highlight(auto_link(tweet.text).html_safe, @keywords) %> </p>					
+		<div class="span-11 last">
+			<p class="left bottom"> <a href="http://twitter.com/<%= tweet.user.screen_name %>"><%= tweet.user.screen_name %></a></p>
+			<p class="left bottom">&nbsp;(<%= tweet.user.name %>),</p>
+			<p class="left bottom">&nbsp;<%= time_ago_in_words(tweet.twitter_created_at) %> ago</p>
+			<p class="left bottom">&nbsp;via <%= tweet.source.html_safe %> </p>
+			<h3 class="right bottom large score-up">+1</h3>
+		</div>
+		
+		<div class="clear"/>
+	  </dt>
+	<% end %>
+</dl>
