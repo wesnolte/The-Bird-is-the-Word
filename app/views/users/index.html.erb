@@ -1,5 +1,24 @@
 <%= render "banner" %>
 
+<script>
+	/********* Your JavaScript ***********/
+	$(document).ready(function() {
+	    $containing_div = $('#tweets');	
+	    var url = '/tweets';
+		setInterval(function(){
+		    $.ajax({
+		        //beforeSend      : function(request) { request.setRequestHeader("Accept", "text/javascript"); },
+		                        /* Included so Rails responds via "format.js" */
+		        success         : function(response) { $containing_div.html(response); },
+				error			: function(response) { $containing_div.html(response); },
+		        type            : 'get',
+		        url                 : url
+		    });
+		    return false;
+		},15000);
+	});
+</script>
+
 <div class="container">
 	<%= render "intro" %>
 	
@@ -22,7 +41,10 @@
 	
 	<div class="span-12 last">
 		<h2>Recent Tweets</h2>
-		<h3 class="quiet">Last 20 tweets</h3>
-		<%= render :partial => "tweets", :object => @tweets %>
+		<h3 class="quiet">Real-time tweets</h3>
+		<div id="tweets">
+				<%= render "tweets/tweets" %>
+		</div>
+		<div id="mydiv"></div>
 	</div>
 </div>

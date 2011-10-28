@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     
     @users = User.all(:include => :score, :order => "scores.value DESC", :limit => 20)
     @tweets = Tweet.all(:include => :user, :order => "twitter_created_at DESC", :limit => 20)
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @users }

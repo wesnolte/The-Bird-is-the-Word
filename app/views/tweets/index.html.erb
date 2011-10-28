@@ -1,31 +1,3 @@
-<h1>Listing tweets</h1>
+<%= render :partial => "tweets" %>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Id str</th>
-    <th>Twitter created at</th>
-    <th>Text</th>
-    <th>Source</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @tweets.each do |tweet| %>
-  <tr>
-    <td><%= tweet.user_id %></td>
-    <td><%= tweet.id_str %></td>
-    <td><%= tweet.twitter_created_at %></td>
-    <td><%= tweet.text %></td>
-    <td><%= tweet.source %></td>
-    <td><%= link_to 'Show', tweet %></td>
-    <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-    <td><%= link_to 'Destroy', tweet, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Tweet', new_tweet_path %>
