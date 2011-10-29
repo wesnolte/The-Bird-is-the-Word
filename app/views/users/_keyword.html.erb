@@ -1,1 +1,5 @@
-<li><h3 class="left bottom box"><%= keyword %></h3></li>
+<li class="left bottom box">
+	<h3 class="left bottom"><%= keyword %></h3>
+	<div class="left dynamicsparkline" style="padding: 0px 2px; width: 30px" values='<%= @word_stats[keyword].join(",") %>'> 
+	</div>
+</li>

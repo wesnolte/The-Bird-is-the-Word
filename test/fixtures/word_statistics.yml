@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  word: 
+  count: 
+  day: 2011-10-28 16:18:10
+
+two:
+  word: 
+  count: 
+  day: 2011-10-28 16:18:10
+
+
+# == Schema Information
+#
+# Table name: word_statistics
+#
+#  id         :integer         not null, primary key
+#  word       :string(255)
+#  day        :datetime
+#  created_at :datetime
+#  updated_at :datetime
+#  freq       :integer
+#
+

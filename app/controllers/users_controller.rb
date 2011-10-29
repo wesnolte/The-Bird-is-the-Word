@@ -1,10 +1,26 @@
 class UsersController < ApplicationController
   respond_to :xml, :json, :http
+  attr_accessor :keywords, :word_stats
   
   # GET /users
   # GET /users.xml
   def index
-    @keywords = ["sfdc", "salesforce", "force.com", "forceDotCom", "chatter"]
+    @keywords = ["sfdc", "salesforce", "forceDotCom", "chatter"]
+    @word_stats = {}
+    
+    @keywords.each do |word|
+      frequencies = []
+      
+      records = WordStatistic.where(:word => word, :day => (DateTime.now.beginning_of_day - 5.days)..DateTime.now.end_of_day)
+      
+      records.each do |record|
+        puts 'record: '+record.inspect
+        frequencies << record.freq
+      end
+      
+      @word_stats[word] = frequencies
+      
+    end
     
     @users = User.all(:include => :score, :order => "scores.value DESC", :limit => 20)
     @tweets = Tweet.all(:include => :user, :order => "twitter_created_at DESC", :limit => 20)
@@ -18,17 +34,12 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
-    # puts "** create: " + params[:user].inspect
     @user = User.new(params[:user])
 
     respond_to do |format|
       if @user.save
-        # puts "format: " +format.inspect
-        #format.html { render :xml => @user, :status => :created, :location => @user } #redirect_to(@user, :notice => 'User was successfully created.') }
-        #format.xml  { render :xml => @user, :status => :created, :location => @user }
         format.json { render :json => @user.id, :status => :created, :location => @user }
       else
-        # puts "** somethings wrong"
         format.html { render :action => "new" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
@@ -38,7 +49,6 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    # puts "** update"
     @user = User.find(params[:id])
 
     respond_to do |format|

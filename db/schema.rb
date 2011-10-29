@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111028123355) do
+ActiveRecord::Schema.define(:version => 20111028163153) do
 
   create_table "scores", :force => true do |t|
     t.integer  "value"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(:version => 20111028123355) do
     t.datetime "updated_at"
     t.string   "profile_image_url"
     t.integer  "level"
+  end
+
+  create_table "word_statistics", :force => true do |t|
+    t.string   "word"
+    t.datetime "day"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "freq"
   end
 
 end

@@ -16,6 +16,14 @@
 		    });
 		    return false;
 		},15000);
+		
+		var myvalues = [10,8,5,26,4,4,1];
+        $('.dynamicsparkline').sparkline('html',{
+			fillColor : 'white',
+			defaultPixelsPerValue : 5,
+			height: '20px',
+			width: '40px'
+		});
 	});
 </script>
 
@@ -28,7 +36,7 @@
 	<div class="span-15 last">
 		<ul class="inline right">
 			<%= render :partial => "keyword", :collection => @keywords %>
-		</ul>
+		</ul>		
 		<hr class="space" />
 	</div>
 	
