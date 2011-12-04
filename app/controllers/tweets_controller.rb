@@ -8,12 +8,12 @@ class TweetsController < ApplicationController
 
   # POST /tweets
   # POST /tweets.xml
+  
   def create
     
     @tweet = Tweet.new(params[:tweet])
     
     # write stats
-    #def update_word_stats
     puts 'keywords: ' + @keywords.inspect
     puts 'tweet: '+ @tweet.text
     
@@ -34,7 +34,7 @@ class TweetsController < ApplicationController
           stat.save
         end
       end
-    end
+    end # keywords
 
     respond_to do |format|
       if @tweet.save

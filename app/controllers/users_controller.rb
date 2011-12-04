@@ -1,24 +1,49 @@
 class UsersController < ApplicationController
   respond_to :xml, :json, :http
-  attr_accessor :keywords, :word_stats
+  attr_accessor :keywords, :word_stats, :total_words
   
   # GET /users
   # GET /users.xml
   def index
-    @keywords = ["sfdc", "salesforce", "forceDotCom", "chatter"]
+    @keywords = ["salesforce", "sfdc", "chatter", "forceDotCom"]
     @word_stats = {}
+    
+    # get the sum of frequencies per word
+    sum_per_words = WordStatistic.sum(:freq, :group => :word)
+    
+    # get the total number of words
+    @total_words = WordStatistic.sum(:freq)
+    
+    # get the sum of the frequencies per word up until yesterday
+    @total_words_yesterday = WordStatistic.where(["day < ?", DateTime.now.beginning_of_day]).sum(:freq)
+    
+    # initialise the days frequencies in case theres a day with 0
+    freq_per_day = []
+
+    for i in 0..4
+      freq_per_day[i] = (DateTime.now.beginning_of_day - i.days)
+    end
+    
+    freq_per_day.reverse!
     
     @keywords.each do |word|
       frequencies = []
       
-      records = WordStatistic.where(:word => word, :day => (DateTime.now.beginning_of_day - 5.days)..DateTime.now.end_of_day)
-      
-      records.each do |record|
-        puts 'record: '+record.inspect
-        frequencies << record.freq
+      word_stats_last_5_days = Hash.new
+      last_few_word_stats = WordStatistic.where(:word => word, :day => (DateTime.now.beginning_of_day - 4.days)..DateTime.now.end_of_day).order("day ASC")
+
+      freq_per_day.each do |day|
+        day_freq = 0
+
+        last_few_word_stats.each do |stat|
+          if (stat[:day].beginning_of_day == day) then
+            day_freq = stat[:freq]
+          end
+        end
+        frequencies << day_freq
       end
       
-      @word_stats[word] = frequencies
+      @word_stats[word] = {:freq => frequencies}
       
     end
     

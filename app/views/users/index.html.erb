@@ -1,4 +1,4 @@
-<%= render "banner" %>
+<%= render "navigation" %>
 
 <script>
 	/********* Your JavaScript ***********/
@@ -7,7 +7,6 @@
 	    var url = '/tweets';
 		setInterval(function(){
 		    $.ajax({
-		        //beforeSend      : function(request) { request.setRequestHeader("Accept", "text/javascript"); },
 		                        /* Included so Rails responds via "format.js" */
 		        success         : function(response) { $containing_div.html(response); },
 				error			: function(response) { $containing_div.html(response); },
@@ -17,7 +16,6 @@
 		    return false;
 		},15000);
 		
-		var myvalues = [10,8,5,26,4,4,1];
         $('.dynamicsparkline').sparkline('html',{
 			fillColor : 'white',
 			defaultPixelsPerValue : 5,
@@ -27,32 +25,33 @@
 	});
 </script>
 
-<div class="container">
-	<%= render "intro" %>
-	
-	<hr/>
-	
-	<h1 class="alt span-9">Tracking these keywords: </h1>
-	<div class="span-15 last">
-		<ul class="inline right">
-			<%= render :partial => "keyword", :collection => @keywords %>
-		</ul>		
-		<hr class="space" />
+<div class="container" id="main">
+	<div class="row">
+		<%= render "intro" %>
 	</div>
 	
 	<hr/>
-	<div class="span-11 colborder">
-		<h2>Leaderboard</h2>
-		<h3 class="quiet">Top 20</h3>
-		<%= render :partial => "leaders", :locals => { :leaders => @users } %>
-	</div>
 	
-	<div class="span-12 last">
-		<h2>Recent Tweets</h2>
-		<h3 class="quiet">Real-time tweets</h3>
-		<div id="tweets">
-				<%= render "tweets/tweets" %>
+	<div class="row">
+		<h3 class="span4">Tracking these keywords: </h3>
+		<div class="span12">
+			<ul class="unstyled right">
+				<%= render :partial => "keyword", :collection => @keywords %>
+			</ul>		
 		</div>
-		<div id="mydiv"></div>
+	</div>
+	
+	<hr/>
+	<div class="row">
+		<div class="span8">
+			<h1>Leaderboard <small>Top 20</small></h1>
+			<%= render :partial => "leaders", :locals => { :leaders => @users } %>
+		</div>
+	
+		<div class="span8">
+			<h1>Recent Tweets <small>Real-time tweets</small></h1>
+			<%= render "tweets/tweets" %>
+			<div id="mydiv"></div>
+		</div>
 	</div>
 </div>

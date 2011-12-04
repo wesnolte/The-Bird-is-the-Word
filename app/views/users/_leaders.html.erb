@@ -1,23 +1,24 @@
-<dl>
-	<% count = 1 %>
-	<% leaders.each do |leader| %>
-	  <dt class="span-11">		
-		<div class="user-score-box <%= if(count==1) then 'notice' else 'box' end %> ">
-			<div class="span-2">
+<% count = 1 %>
+<% leaders.each do |leader| %>
+	<div class="alert-message block-message info">
+		<div class="row">	
+			<div class="span1">
 				<%= image_tag leader.profile_image_url, :class => 'left' %> 
 			</div>
-			<div class="span-5">
-				<h3 class="bottom"> <a href="http://twitter.com/<%= leader.screen_name %>"><%= leader.screen_name %></a> </h3>
-				<h4 class="quiet"> <%= leader.name %> </h4>
+			<div class="span4">
+				<h5 class=""> <a href="http://twitter.com/<%= leader.screen_name %>"><%= leader.screen_name %></a> </h5>
+				<h6 class=""> <%= leader.name %> </h6>
 			</div>
-			<div class="span-3 last">
-				<h1 class="bottom"> <%= leader.score.value %> XP</h1>
-				<h3 class="bottom">Level <%= leader.level %></h3>				
-				<p class="quiet bottom"><%= count.ordinalize %> position</p>
+			<div class="span2">
+				<h5 class=""> <%= leader.score.value %> XP <small>Level <%= leader.level %></small></h5>
+				<%= content_tag(:p, count.ordinalize + " position", :class => (count == 1 ? "label warning no-shadow" : ""))%>
+				<% tweet_text = "I'm in " + count.ordinalize + " position with " + leader.score.value.to_s + "XP on #tbitw."%>
+				<%= custom_tweet_button((image_tag 'twitter_16x16.png', :class => "share-icon") + "share my score", { :text => tweet_text, :via => "tbitw_" }, { :class => "btn primary small" }) %>				
 			</div>
-			<div class="clear"/>
 		</div>
-	  </dt>
-	  <% count+= 1 %>
-	<% end %>
-</dl>
+	</div>
+	
+	<br/>
+
+  <% count+= 1 %>
+<% end %>

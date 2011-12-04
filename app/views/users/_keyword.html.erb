@@ -1,5 +1,17 @@
-<li class="left bottom box">
-	<h3 class="left bottom"><%= keyword %></h3>
-	<div class="left dynamicsparkline" style="padding: 0px 2px; width: 30px" values='<%= @word_stats[keyword].join(",") %>'> 
+<% 	
+	todays_freq = @word_stats[keyword][:freq][4].to_f
+	yesterdays_freq = @word_stats[keyword][:freq][3].to_f
+	change = begin
+		((( todays_freq - yesterdays_freq ) / yesterdays_freq ) * 100).round 
+	rescue
+		100
+	end
+
+
+%>
+<li class="left alert-message block-message info keyword">
+	<h5 class="left"><%= keyword %></h5>
+	<div class="left dynamicsparkline" style="padding: 0px 2px; width: 30px" values='<%= @word_stats[keyword][:freq].join(",") %>'> 
 	</div>
+	<%= content_tag(:p, change.to_s + "% in the past day", :class => "clear label " + (change > -1 ? "success" : "important") ) %>
 </li>

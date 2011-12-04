@@ -2,26 +2,14 @@
 <html>
 <head>
   <title>The bird is the worde</title>
-	<!--[if lt IE 9]>
-	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
-	<%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
-	<%= stylesheet_link_tag 'blueprint/src/typography', :media => 'screen'%>
-	<%= stylesheet_link_tag 'blueprint/plugins/fancy-type/screen',  :media => 'screen' %>	
-	<!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
+	<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
 	<%= stylesheet_link_tag 'custom', :media => 'screen' %>
 
 	<%= javascript_include_tag :defaults %>
-	
-	<%= javascript_include_tag 'http://ejohn.org/files/retweet.js'%>
-	
+	<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'%>
 	<%= javascript_include_tag 'jquery.sparkline.min.js'%>
 	
 	<script>
-		RetweetJS.bitly_user = 'weesilmania'
-		RetweetJS.bitly_key = 'R_bd027c47dde6fe296953faeacff5addd'
-		
 		<!-- Google Analytics Piece -->
 
 	  var _gaq = _gaq || [];
@@ -39,7 +27,17 @@
 </head>
 <body>
 
-<%= yield %>
+	<%= yield %>
+	
+	<script>
+	
+		jQuery(document).load(function(){
+			$('a.score-share').live(function(){
+				$(this).val('Share my score');
+			});
+		});
+	
+	</script>
 
 </body>
 </html>

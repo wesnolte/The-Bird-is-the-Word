@@ -6,16 +6,27 @@ html, body{
 
 body{
 	background-color: #FFFAE6;
+	padding-top : 40px;
 }
 
-.box{
-	background-color: #C9E5F2;
-	padding: 1em;
-	margin-left : 2px;
+.clear{
+	clear : both;
+}
+
+.left{
+	float: left;
+}
+
+.no-shadow {
+	text-shadow : none !important;
 }
 
 .relative{
 	position:relative;
+}
+
+.right{
+	float: right !important;
 }
 
 ul{
@@ -30,18 +41,20 @@ ul.inline{
 		display: inline;
 	}
 	
-/* Header */
-#banner {
-	background-color: #C9E5F2;	
-	margin-bottom: 20px;
-	width: 100%;
+/* Main */
+#main{
+	padding :20px 0;
 }
 
-#beta-badge{
-	left: 421px;
-	top: -15px;
-	position: absolute;
+/* keywords */
+
+.keyword {
+	margin-left: 10px;
 }
+
+	.keyword *{
+		text-shadow: none !important;
+	}
 
 /* Score Board */
 .user-score-box{
@@ -51,9 +64,11 @@ ul.inline{
 	.user-score-box img{
 		padding: 0 10px 0 0;
 	}
-
-ul#tweets{
-	list-style-type: none;
+	
+.share-icon {
+	height: 13px;
+	padding: 0 2px 0 0;
+	vertical-align: top;
 }
 
 /* Tweets */
@@ -66,5 +81,20 @@ p.tweet-text{
 	color: green;
 	font-weight: bold;
 }
+
+/* bootstrap overrides */
+.alert-message {
+	margin-bottom: 0 !important;
+}
+	.alert-message a{
+		font-weight: normal;
+	}
+	
+	.alert-message.block-message ul, .alert-message.block-message p {
+		margin: 0 !important;
+	}	
+
+.btn.small {
+	padding: 4px 2px;
 }
 
