@@ -5,7 +5,7 @@ gem 'annotate'
 
 gem 'sqlite3'
 
-gem "tweet-button", :git => "git@github.com:wesnolte/tweet-button.git"
+gem "tweet-button"
 
 group :development, :test do
   gem 'itslog'
