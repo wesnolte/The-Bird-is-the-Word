@@ -5,7 +5,8 @@ gem 'annotate'
 
 gem 'sqlite3'
 
-gem "tweet-button"
+gem 'tweet-button'
+gem 'rake', '0.8.7'
 
 group :development, :test do
   gem 'itslog'
