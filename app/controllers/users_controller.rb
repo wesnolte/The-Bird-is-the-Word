@@ -45,6 +45,8 @@ class UsersController < ApplicationController
         frequencies << day_freq
       end
       
+      puts 'frequencies: ' + frequencies.inspect
+      
       @word_stats[word] = {:freq => frequencies}
       
     end
