@@ -1,6 +1,6 @@
 <% count = 1 %>
 <% leaders.each do |leader| %>
-	<div class="alert-message block-message info">
+	<div class="alert-message block-message info leader-info">
 		<div class="row">	
 			<div class="span1">
 				<%= image_tag leader.profile_image_url, :class => 'left' %> 
@@ -10,7 +10,7 @@
 				<h6 class=""> <%= leader.name %> </h6>
 			</div>
 			<div class="span2">
-				<h5 class=""> <%= leader.score.value %> XP <small>Level <%= leader.level %></small></h5>
+				<h5> <%= leader.score.value %> XP <small>Level <%= leader.level %></small></h5>
 				<%= content_tag(:p, count.ordinalize + " position", :class => (count == 1 ? "label warning no-shadow" : ""))%>
 				<% tweet_text = "I'm in " + count.ordinalize + " position with " + leader.score.value.to_s + "XP on #tbitw."%>
 				<%= custom_tweet_button((image_tag 'twitter_16x16.png', :class => "share-icon") + "share my score", { :text => tweet_text, :via => "tbitw_" }, { :class => "btn primary small" }) %>				

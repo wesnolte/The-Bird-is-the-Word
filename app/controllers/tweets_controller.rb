@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
   attr_accessor :keywords
 
   def initialize
-    @keywords = ["sfdc", "salesforce", "forceDotCom", "chatter"]
+    @keywords = ["sfdc", "salesforce", "forcedotcom", "crm"]
   end
 
   # POST /tweets
@@ -14,21 +14,15 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(params[:tweet])
     
     # write stats
-    puts 'keywords: ' + @keywords.inspect
-    puts 'tweet: '+ @tweet.text
-    
     @keywords.each do |word|
               
       if @tweet.text.downcase.include? word then
-        puts "contains: " + word
         
         stat = WordStatistic.where(:word => word, :day => DateTime.now.beginning_of_day..DateTime.now).first
         if stat.nil? then
           new_stat = WordStatistic.new(:word => word, :day => DateTime.now, :freq => 1)
           new_stat.save
         else
-          puts 'stat: '+stat.inspect          
-          puts "word feq: " + stat.freq.to_s
           
           stat.freq += 1
           stat.save

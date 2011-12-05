@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    @keywords = ["salesforce", "sfdc", "chatter", "forceDotCom"]
+    @keywords = ["salesforce", "sfdc", "crm", "forcedotcom"]
     @word_stats = {}
     
     # get the sum of frequencies per word

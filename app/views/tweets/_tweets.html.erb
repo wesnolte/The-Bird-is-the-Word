@@ -1,19 +1,21 @@
-<% @tweets.each do |tweet| %>
-	<div class="alert-message block-message info">
-	  <div class="row">		
-		<div class="span2">
-			<%= image_tag tweet.user.profile_image_url%> 
+<div id="tweets">
+	<% @tweets.each do |tweet| %>
+		<div class="alert-message block-message info">
+		  <div class="row">		
+			<div class="span2">
+				<%= image_tag tweet.user.profile_image_url %> 
+			</div>
+			<p class="span5 tweet-text"><%= highlight(auto_link(tweet.text).html_safe, @keywords) %> </p>					
+			<div class="span7 tweet-details">
+				<p class="left"> <a href="http://twitter.com/<%= tweet.user.screen_name %>"><%= tweet.user.screen_name %></a></p>
+				<p class="left">&nbsp;(<%= tweet.user.name %>),</p>
+				<p class="left">&nbsp;<%= time_ago_in_words(tweet.twitter_created_at) %> ago</p>
+				<p class="left">&nbsp;via <%= tweet.source.html_safe %> </p>
+				<h5 class="right score-up">+1</h5>
+			</div>
+		  </div>
 		</div>
-		<p class="span5 tweet-text"><%= highlight(auto_link(tweet.text).html_safe, @keywords) %> </p>					
-		<div class="span7">
-			<p class="left"> <a href="http://twitter.com/<%= tweet.user.screen_name %>"><%= tweet.user.screen_name %></a></p>
-			<p class="left">&nbsp;(<%= tweet.user.name %>),</p>
-			<p class="left">&nbsp;<%= time_ago_in_words(tweet.twitter_created_at) %> ago</p>
-			<p class="left">&nbsp;via <%= tweet.source.html_safe %> </p>
-			<h5 class="right score-up">+1</h5>
-		</div>
-	  </div>
-	</div>
 	
-	<br/>
-<% end %>
+		<br/>
+	<% end %>
+</div>

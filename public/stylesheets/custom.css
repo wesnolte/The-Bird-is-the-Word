@@ -9,8 +9,16 @@ body{
 	padding-top : 40px;
 }
 
+hr {
+	border-bottom : 1px solid #e6e6e6;
+}
+
 .clear{
 	clear : both;
+}
+
+.highlight {
+	background-color : yellow;
 }
 
 .left{
@@ -57,14 +65,10 @@ ul.inline{
 	}
 
 /* Score Board */
-.user-score-box{
-	
-}
+.leader-info a{
+	font-weight : bold !important;	
+}	
 
-	.user-score-box img{
-		padding: 0 10px 0 0;
-	}
-	
 .share-icon {
 	height: 13px;
 	padding: 0 2px 0 0;
@@ -76,6 +80,14 @@ p.tweet-text{
 	font-family: tahoma;
 	font-size: 14px;
 }
+
+.tweet-details p, .tweet-details a{
+	font-size : 11px !important;
+}	
+	.tweet-details a, .tweet-text a{
+		color : blue !important;
+		text-decoration : underline;
+	}
 
 .score-up{
 	color: green;
@@ -95,6 +107,7 @@ p.tweet-text{
 	}	
 
 .btn.small {
+	font-weight : normal !important;
 	padding: 4px 2px;
 }
 
