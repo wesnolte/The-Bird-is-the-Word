@@ -38,14 +38,15 @@ class UsersController < ApplicationController
         day_freq = 0
 
         last_few_word_stats.each do |stat|
+          puts 'stat_day: ' + stat[:day].beginning_of_day.inspect
+          puts 'day: ' + day.inspect
+          
           if (stat[:day].beginning_of_day == day) then
             day_freq = stat[:freq]
           end
         end
         frequencies << day_freq
       end
-      
-      puts 'frequencies: ' + frequencies.inspect
       
       @word_stats[word] = {:freq => frequencies}
       
