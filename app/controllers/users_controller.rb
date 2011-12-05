@@ -31,6 +31,8 @@ class UsersController < ApplicationController
       
       word_stats_last_5_days = Hash.new
       last_few_word_stats = WordStatistic.where(:word => word, :day => (DateTime.now.beginning_of_day - 4.days)..DateTime.now.end_of_day).order("day ASC")
+      
+      puts 'last few word stats: ' + last_few_word_stats.inspect
 
       freq_per_day.each do |day|
         day_freq = 0
