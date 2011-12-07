@@ -31,9 +31,10 @@
 	
 	<script>
 	
-		jQuery(document).load(function(){
-			$('a.score-share').live(function(){
-				$(this).val('Share my score');
+		jQuery(document).ready(function($){			
+			$('.close').click(function(e){
+				e.preventDefault();
+				$(this).closest('.block-message').toggle('medium');
 			});
 		});
 	

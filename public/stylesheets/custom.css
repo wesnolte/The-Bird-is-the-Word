@@ -5,7 +5,7 @@ html, body{
 }
 
 body{
-	background-color: #FFFAE6;
+
 	padding-top : 40px;
 }
 
@@ -109,5 +109,11 @@ p.tweet-text{
 .btn.small {
 	font-weight : normal !important;
 	padding: 4px 2px;
+}
+
+.topbar .fill, .topbar-inner{
+	background-color : #194F73;
+	background-image : url('../images/title_bg.jpg');
+	height : 43px;
 }
 
