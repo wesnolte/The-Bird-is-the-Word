@@ -54,6 +54,13 @@ ul.inline{
 	padding :20px 0;
 }
 
+/* Twitter, facebook etc. */
+
+.social-media{
+	padding-top : 8px;
+	width : 90px;
+}
+
 /* keywords */
 
 .keyword {

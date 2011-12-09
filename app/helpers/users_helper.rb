@@ -4,5 +4,6 @@ module UsersHelper
   TweetButton.default_tweet_button_options = {:via => "tbitw_",
                                               :related => "@wesnolte",
                                               :count => "horizontal",
-                                              :counturl => "http://thebirdisthewor.de"}
+                                              :counturl => "http://thebirdisthewor.de"}                                         
+  
 end
