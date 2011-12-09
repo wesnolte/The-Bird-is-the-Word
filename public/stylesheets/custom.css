@@ -105,10 +105,23 @@ p.tweet-text{
 	.alert-message.block-message ul, .alert-message.block-message p {
 		margin: 0 !important;
 	}	
+	
+	.alert-message.block-message.success, .alert-message.block-message.info {
+		background-color: #9BBBC4;
+		border-color: #78959E;
+	}
 
 .btn.small {
 	font-weight : normal !important;
 	padding: 4px 2px;
+}
+
+h1 small{
+	color : #aaa;
+}
+
+h6, h5 small{
+	color : #C73C3C;
 }
 
 .topbar .fill, .topbar-inner{
