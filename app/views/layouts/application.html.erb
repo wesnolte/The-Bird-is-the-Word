@@ -9,11 +9,11 @@
 	<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'%>
 	<%= javascript_include_tag 'jquery.sparkline.min.js'%>
 	
-	<script>
-		<!-- Google Analytics Piece -->
+	<script type="text/javascript">
 
 	  var _gaq = _gaq || [];
 	  _gaq.push(['_setAccount', 'UA-26186265-1']);
+	  _gaq.push(['_setDomainName', 'thebirdisthewor.de']);
 	  _gaq.push(['_trackPageview']);
 
 	  (function() {
@@ -21,6 +21,7 @@
 	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	  })();
+
 	</script>
 	
 	<%= csrf_meta_tag %>
